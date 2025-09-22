@@ -75,6 +75,63 @@ h6,
 :focus {
   outline: none !important;
 }
+/* =============================== */
+/* ✅ Advanced Preloader           */
+/* =============================== */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(120deg, #e6eefc, #fdfdfd, #eaf6ff);
+  background-size: 400% 400%;
+  animation: bgMove 8s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  overflow: hidden;
+  transition: transform 1.5s ease, opacity 0.6s ease;
+}
+
+.loader-bar {
+  animation: loadGrow 4s ease-in-out infinite;
+}
+
+#preloader.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.loader-wrapper {
+  text-align: center;
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;      /* 先透明再淡入 */
+}
+
+/* Logo 心跳 + 微发光 */
+.preloader-logo {
+  width: 260px;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.25));
+  animation: heartbeat 1.4s ease-in-out infinite;
+  margin-bottom: 32px;
+}
+
+/* 进度轨 */
+.loader-track {
+  width: 240px;
+  height: 6px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* 进度条动画 */
+.loader-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #63a0cf 0%, #ffd700 100%);
+  animation: loadGrow 2.8s ease-in-out infinite;
+}
 /*-----------------------------------------------------------
   2. Typography 
 ------------------------------------------------------------*/
@@ -318,6 +375,7 @@ p {
 }
 .hero h1 {
   margin-top: 250px;
+  font-size: 42px;
 }
 .hero p {
   margin-bottom: 50px;
@@ -400,6 +458,7 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
+  size: 20px;
   transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) ease;
   will-change: transform;
   transform: translate(-50%, -50%) scale(0);
@@ -608,6 +667,31 @@ footer h6 {
   color: #FF3946;
   transition: all 0.3s ease;
 }
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background-color: #ff4b4b; /* 默认背景色 */
+  color: #fff; /* 默认字体/图标颜色 */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 55px;      /* 圆形按钮 */
+  height: 55px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: none; /* 默认隐藏 */
+  transition: all 0.3s ease;
+}
+
+#backToTop:hover {
+  color: #314584;   /* 悬停时文字/图标变色 */
+  background-color: #ff4b4b; /* 保持原背景 */
+}
+
 /*-----------------------------------------------------------
   11. Responsive
 -------------------------------------------------------------*/
